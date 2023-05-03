@@ -13,15 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set current time 
+      id: set_time 
+      run: | 
+        echo "::set-output name=time::$(date)"
     - name: Inject current time
       env: 
         CURRENT_TIME: ${{ steps.set_time.outputs.time }}
       run: | 
         echo "Current time is $CURRENT_TIME" - 
-    - name: Set current time 
-      id: set_time 
-      run: | 
-        echo "::set-output name=time::$(date)"
+
 
     #- uses: actions/checkout@v3
     #- name: Setup .NET
